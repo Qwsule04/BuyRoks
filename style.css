@@ -13,6 +13,7 @@ header {
   position: sticky;
   font-size: 1.5rem;
   top: 0;
+  z-index: 1000;
   background-color: #ccadff;
   padding: 1rem 2rem;
   font-family: 'Poppins', sans-serif;
@@ -29,6 +30,8 @@ nav ul {
   display: flex;
   list-style: none;
   gap: 2rem;
+  margin: 0;
+  padding: 0;
 }
 
 nav a {
@@ -43,6 +46,14 @@ nav a:focus {
   text-decoration: underline;
 }
 
+nav a.current {
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+/* ==========================================
+   HERO SECTION
+   ========================================== */
 .hero {
   display: flex;
   align-items: center;
@@ -51,35 +62,51 @@ nav a:focus {
   max-width: 1160px;
   margin-inline: auto;
   padding: 4rem 2rem;
-  padding-top: 12rem;
+  padding-top: 6rem;
+}
+
+.hero-text {
+  flex: 1;
 }
 
 .hero-text h1 {
   font-size: 4rem;
   margin-bottom: 1rem;
+  margin-top: 0;
 }
 
 .hero-text h2 {
   font-size: 1.9rem;
   margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+.hero-text p {
+  margin-top: 1rem;
+  line-height: 1.6;
+  color: #333333;
 }
 
 .hero-photo {
   flex: 1;
   max-width: 500px;
   border-radius: 12px;
+  object-fit: cover;
 }
 
+/* ==========================================
+   CATALOG & GRID SECTIONS
+   ========================================== */
 .catalog {
   max-width: 1160px;
   margin-inline: auto;
   padding: 2rem;
-  margin-top: 12rem;
+  margin-top: 4rem;
 }
 
 .catalog h2 {
   text-align: center;
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   font-size: 3rem;
 }
 
@@ -93,14 +120,16 @@ nav a:focus {
 .product-card {
   background-color: #ffffff;
   border-radius: 12px;
-  padding: 1rem;
+  padding: 1.5rem;
   text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 .product-photo {
   width: 100%;
   height: 180px;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 .price {
@@ -124,6 +153,9 @@ nav a:focus {
   background-color: #5cc42e;
 }
 
+/* ==========================================
+   REVIEWS TEASER SECTION
+   ========================================== */
 .reviews-teaser {
   display: flex;
   align-items: center;
@@ -135,7 +167,6 @@ nav a:focus {
   margin-top: 4rem;
 }
 
-
 .reviews-teaser-text {
   flex: 1;
   max-width: 500px;
@@ -146,6 +177,7 @@ nav a:focus {
   max-width: 400px;
   height: 300px;
   object-fit: cover;
+  border-radius: 12px;
 }
 
 .stars {
@@ -161,6 +193,9 @@ nav a:focus {
   color: #231f20;
   font-weight: 600;
   text-decoration: none;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
 }
 
 .btn:hover,
@@ -168,6 +203,78 @@ nav a:focus {
   background-color: #5cc42e;
 }
 
+/* ==========================================
+   CONTACT FORM & FAQ (ABOUT PAGE EXTENSIONS)
+   ========================================== */
+.contact-section {
+  max-width: 600px;
+  margin-inline: auto;
+  padding: 4rem 2rem;
+}
+
+.contact-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.form-group label {
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.faq-container {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+
+.faq-container details {
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.faq-container summary {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #231f20;
+}
+
+.faq-container p {
+  margin-top: 0.5rem;
+  color: #555555;
+  margin-bottom: 0;
+}
+
+/* ==========================================
+   FOOTER SECTION
+   ========================================== */
 footer {
   display: flex;
   align-items: center;
@@ -177,6 +284,7 @@ footer {
   background-color: #231f20;
   color: #ffffff;
   padding: 1.5rem 2rem;
+  margin-top: 4rem;
 }
 
 .footer-logo {
@@ -186,8 +294,12 @@ footer {
 .copyright {
   font-size: 0.85rem;
   color: #cccccc;
+  margin: 0;
 }
 
+/* ==========================================
+   MEDIA QUERIES / RESPONSIVENESS
+   ========================================== */
 @media (max-width: 768px) {
   header {
     flex-wrap: wrap;
@@ -196,7 +308,7 @@ footer {
   .hero {
     flex-direction: column;
     text-align: center;
-    padding-top: 8rem;
+    padding-top: 4rem;
   }
 
   .hero-text h1 {
@@ -208,7 +320,7 @@ footer {
   }
 
   .catalog {
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
 
   .catalog-grid {
@@ -218,10 +330,6 @@ footer {
   .reviews-teaser {
     flex-direction: column;
     text-align: center;
-  }
-
-  .reviews-grid {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -252,194 +360,4 @@ footer {
     flex-direction: column;
     text-align: center;
   }
-
-  .reviews-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .showcase-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-nav a.current {
-  text-decoration: underline;
-  font-weight: 700;
-}
-
-
-.page-intro {
-  text-align: center;
-  padding: 40px 20px 10px;
-}
-
-.reviews-summary {
-  display: flex;
-  justify-content: center;
-  padding: 10px 20px 30px;
-}
-
-.summary-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.big-number {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #6bd637;
-}
-
-
-.review-header .stars {
-  font-size: 1rem;
-  letter-spacing: 2px;
-}
-
-
-.reviews-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 20px 40px 40px;
-}
-
-.review-card {
-  background: #fff;
-  border-radius: 10px;
-  padding: 18px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.review-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: #ccadff;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  flex-shrink: 0;
-}
-
-.review-header h2 {
-  font-size: 1rem;
-  margin: 0;
-}
-
-.review-card p {
-  flex: 1;
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
-
-.review-photo {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
-}
-
-.review-date {
-  font-size: 0.8rem;
-  color: #999;
-}
-
-/* Replacement showcase — CSS Grid */
-.replacement-showcase {
-  text-align: center;
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 20px 40px 40px;
-}
-
-.replacement-showcase p {
-  color: #666;
-  margin-bottom: 24px;
-}
-
-.showcase-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.showcase-grid figure {
-  margin: 0;
-  background: #fff;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-
-.showcase-grid img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  display: block;
-}
-
-.showcase-grid figcaption {
-  padding: 12px;
-  font-size: 0.9rem;
-}
-
-
-.leave-review {
-  max-width: 500px;
-  margin: 0 auto 50px;
-  padding: 0 20px;
-}
-
-.form-row {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 14px;
-}
-
-.form-row label {
-  margin-bottom: 6px;
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-
-.form-row input,
-.form-row select,
-.form-row textarea {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-family: inherit;
-}
-
-.leave-review button {
-  margin-top: 0.5rem;
-  padding: 0.6rem 1.5rem;
-  border: none;
-  background-color: #6bd637;
-  color: #231f20;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.leave-review button:hover {
-  background: #b38fe6;
 }
