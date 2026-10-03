@@ -1,0 +1,41 @@
+
+@media (min-width: 30rem) {
+  header {
+    position: sticky;
+    top: 0;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  nav ul {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  footer {
+    flex-direction: row;
+    text-align: left;
+  }
+}
+
+@media (min-width: 48rem) {
+  .hero,
+  .reviews-teaser {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .hero > * {
+    flex: 1;
+  }
+
+  .catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 64rem) {
+  .catalog-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
