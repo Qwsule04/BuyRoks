@@ -9,63 +9,83 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid #231f20;
+  outline-offset: 3px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 header {
-  position: sticky;
   font-size: 1.5rem;
-  top: 0;
   background-color: #ccadff;
   padding: 1rem 2rem;
   font-family: 'Poppins', sans-serif;
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .logo {
   height: 70px;
+  width: auto;
 }
 
 nav ul {
   display: flex;
+  flex-direction: column;
   list-style: none;
-  gap: 2rem;
+  gap: 0.75rem;
 }
 
 nav a {
   text-decoration: none;
-  color: #ffffff;
+  color: #231f20;
   font-weight: 500;
 }
 
 nav a:hover,
 nav a:focus {
-  color: #aeffc2;
+  color: #5a2ea6;
   text-decoration: underline;
 }
 
 .hero {
   display: flex;
+  flex-direction: column;
+  text-align: center;
   align-items: center;
   justify-content: center;
   gap: 3rem;
   max-width: 1160px;
   margin-inline: auto;
   padding: 4rem 2rem;
-  padding-top: 12rem;
+}
+
+.hero > * {
+  min-width: 0;
 }
 
 .hero-text h1 {
-  font-size: 4rem;
+  font-size: clamp(1.8rem, 5vw, 4rem);
   margin-bottom: 1rem;
 }
 
 .hero-text h2 {
-  font-size: 1.9rem;
+  font-size: clamp(1.2rem, 3vw, 1.9rem);
   margin-bottom: 1rem;
 }
 
 .hero-photo {
   flex: 1;
+  width: 100%;
   max-width: 500px;
   border-radius: 12px;
 }
@@ -74,18 +94,18 @@ nav a:focus {
   max-width: 1160px;
   margin-inline: auto;
   padding: 2rem;
-  margin-top: 12rem;
+  margin-top: 4rem;
 }
 
 .catalog h2 {
   text-align: center;
   margin-bottom: 5rem;
-  font-size: 3rem;
+  font-size: clamp(1.8rem, 5vw, 3rem);
 }
 
 .catalog-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 2rem;
   margin-top: 1rem;
 }
@@ -99,7 +119,7 @@ nav a:focus {
 
 .product-photo {
   width: 100%;
-  height: 180px;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
 }
 
@@ -126,6 +146,8 @@ nav a:focus {
 
 .reviews-teaser {
   display: flex;
+  flex-direction: column;
+  text-align: center;
   align-items: center;
   justify-content: center;
   gap: 3rem;
@@ -143,13 +165,14 @@ nav a:focus {
 
 .reviews-teaser-photo {
   flex: 1;
+  width: 100%;
   max-width: 400px;
   height: 300px;
   object-fit: cover;
 }
 
 .stars {
-  color: #6bd637;
+  color: #36801a;
   font-size: 2rem;
 }
 
@@ -170,6 +193,8 @@ nav a:focus {
 
 footer {
   display: flex;
+  flex-direction: column;
+  text-align: center;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -179,8 +204,27 @@ footer {
   padding: 1.5rem 2rem;
 }
 
+/* demo-result.html: footer stays at the bottom of a short page */
+.demo-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.demo-page main {
+  flex: 1;
+}
+
+.demo-result-card {
+  max-width: 40rem;
+  margin-inline: auto;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
 .footer-logo {
   height: 35px;
+  width: auto;
 }
 
 .copyright {
@@ -189,70 +233,12 @@ footer {
 }
 
 @media (max-width: 768px) {
-  header {
-    flex-wrap: wrap;
-  }
-
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    padding-top: 8rem;
-  }
-
-  .hero-text h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero-text h2 {
-    font-size: 1.4rem;
-  }
-
-  .catalog {
-    margin-top: 4rem;
-  }
-
-  .catalog-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .reviews-teaser {
-    flex-direction: column;
-    text-align: center;
-  }
-
   .reviews-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  nav ul {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .hero-text h1 {
-    font-size: 1.8rem;
-  }
-
-  .hero-text h2 {
-    font-size: 1.2rem;
-  }
-
-  .catalog-grid {
-    grid-template-columns: 1fr;
-  }
-
-  footer {
-    flex-direction: column;
-    text-align: center;
-  }
-
   .reviews-grid {
     grid-template-columns: 1fr;
   }
@@ -262,7 +248,8 @@ footer {
   }
 }
 
-nav a.current {
+nav a.current,
+nav a[aria-current="page"] {
   text-decoration: underline;
   font-weight: 700;
 }
@@ -448,14 +435,6 @@ nav a.current {
 
 header {
   z-index: 1000;
-}
-
-.hero {
-  padding-top: 4rem;
-}
-
-.catalog {
-  margin-top: 4rem;
 }
 
 details {
