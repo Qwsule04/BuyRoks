@@ -477,3 +477,7 @@ footer {
 .leave-review button:hover {
   background: #b38fe6;
 }
+.step-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
