@@ -1,0 +1,61 @@
+/* ===== Registration page (register.html) ===== */
+
+.register-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.register-form {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.register-form fieldset .form-label {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Submit uses the site's green .btn; Reset is a lighter outline button */
+.register-form .btn {
+  margin-top: 0;
+  border-radius: 0;
+}
+
+.btn-reset {
+  background-color: transparent;
+  border: 2px solid #231f20;
+  color: #231f20;
+}
+
+.btn-reset:hover,
+.btn-reset:focus {
+  background-color: #eeeeee;
+  color: #231f20;
+}
+
+/* Bootstrap's reboot changes the shared header and footer
+   (line height, list and paragraph margins). These rules bring
+   them back to how they look on the other pages. */
+header,
+footer {
+  line-height: normal;
+}
+
+nav ul {
+  margin: 1em 0;
+  padding-left: 40px;
+}
+
+.copyright {
+  margin: 1em 0;
+}
+
+/* When JS moves focus to the first invalid field, keep it
+   below the sticky header instead of hidden under it */
+.register-form input,
+.register-form select {
+  scroll-margin-top: 8rem;
+}
