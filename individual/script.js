@@ -1,8 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ==========================================
-  // TASK 6: Counter with click events
-  // ==========================================
   let count = 0;
   const counterSpan = document.getElementById('counter-value');
   const btnIncrease = document.getElementById('btn-increase');
@@ -19,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   btnDecrease.addEventListener('click', () => {
-    if (count > 0) { // Теріс мәндерге жол бермеу
+    if (count > 0) { 
       updateCounter(count - 1);
     }
   });
@@ -29,9 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // ==========================================
-  // TASK 7: Live text preview
-  // ==========================================
   const liveInput = document.getElementById('live-input');
   const textPreview = document.getElementById('text-preview');
   const charCount = document.getElementById('char-count');
@@ -55,13 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
     textPreview.textContent = 'Your text will appear here';
     textPreview.classList.add('text-muted');
     charCount.textContent = '0';
-    liveInput.focus(); // Фокусты қайта енгізу жолағына қайтару
+    liveInput.focus(); 
   });
 
 
-  // ==========================================
-  // TASK 8: Change an image with a select control
-  // ==========================================
   const imageSelect = document.getElementById('image-select');
   const petImage = document.getElementById('pet-image');
   const imageCaption = document.getElementById('image-caption');
@@ -96,9 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // ==========================================
-  // TASK 9: Keyboard events
-  // ==========================================
   const keyInput = document.getElementById('key-input');
   const keyStatus = document.getElementById('key-status');
   const submittedResult = document.getElementById('submitted-result');
@@ -120,9 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  // ==========================================
-  // TASK 10: Mouse and focus events
-  // ==========================================
   const interactiveCard = document.getElementById('interactive-card');
   const cardInstruction = document.getElementById('card-instruction');
 
@@ -136,11 +121,9 @@ document.addEventListener('DOMContentLoaded', () => {
     cardInstruction.textContent = 'Hover over this card or focus on it using the Tab key.';
   }
 
-  // Mouse events
   interactiveCard.addEventListener('mouseenter', setHighlight);
   interactiveCard.addEventListener('mouseleave', removeHighlight);
 
-  // Focus & Blur events
   interactiveCard.addEventListener('focus', setHighlight);
   interactiveCard.addEventListener('blur', removeHighlight);
 
