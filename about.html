@@ -28,9 +28,6 @@
   </header>
 
   <main>
-    <!-- ==========================================
-         TASK 0: Personalized Welcome Section
-         ========================================== -->
     <section class="container my-4 p-4 border rounded bg-light" id="task0-section">
       <h3 class="mb-3">Personalized Welcome</h3>
       <div class="mb-3">
@@ -149,9 +146,6 @@
       </form>
     </section>
 
-    <!-- ==========================================
-         TASK 2: FAQ Accordion Section
-         ========================================== -->
     <section class="container my-5" style="max-width: 700px;" id="task2-faq-section">
       <h2 class="text-center mb-4">Frequently Asked Questions</h2>
       
@@ -167,7 +161,6 @@
           </div>
         </div>
 
-        <!-- FAQ Item 2 -->
         <div class="card mb-3 p-3 shadow-sm">
           <button class="faq-toggle btn btn-light text-start fw-bold w-100 d-flex justify-content-between align-items-center" aria-expanded="false">
             <span>Is it safe for kids and other pets?</span>
@@ -177,8 +170,6 @@
             Yes, all our rocks are smooth, non-toxic, and very friendly!
           </div>
         </div>
-
-        <!-- FAQ Item 3 -->
         <div class="card mb-3 p-3 shadow-sm">
           <button class="faq-toggle btn btn-light text-start fw-bold w-100 d-flex justify-content-between align-items-center" aria-expanded="false">
             <span>What is the lifespan of a Pet Rock?</span>
@@ -200,13 +191,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-  <!-- ==========================================
-       JAVASCRIPT LOGIC FOR TASK 0 & TASK 2
-       ========================================== -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-      // Task 0: Personalized Welcome Logic
       const nameInput = document.getElementById('username-input');
       const welcomeBtn = document.querySelector('#welcome-btn');
       const welcomeMessage = document.getElementById('welcome-message');
@@ -225,7 +212,6 @@
         });
       }
 
-      // Task 2: FAQ Accordion Logic
       const faqButtons = document.querySelectorAll('.faq-toggle');
 
       if (faqButtons.length > 0) {
@@ -243,7 +229,6 @@
     });
   </script>
 
-  <!-- Contact Form Validation Script -->
   <script>
     const contactForm = document.getElementById('contactForm');
     contactForm.addEventListener('submit', function (event) {
