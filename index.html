@@ -7,6 +7,8 @@
   <link rel="icon" type="image/png" href="images/logo.png">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/wishlist.css">
+  <script src="js/wishlist.js" defer></script>
 </head>
 <body>
 
@@ -83,6 +85,26 @@
     </article>
 
   </div>
+</section>
+
+
+<section class="wishlist" aria-labelledby="wishlist-title">
+  <p class="wishlist-tag">Dynamic list</p>
+  <h2 id="wishlist-title">My rock wishlist</h2>
+  <p class="wishlist-intro">Write down the rocks you would like to adopt. The list lives only on this page and is cleared when you reload it.</p>
+
+  <form id="wishlist-form" class="wishlist-form">
+    <label for="wishlist-input">Rock name</label>
+    <div class="wishlist-row">
+      <input type="text" id="wishlist-input" maxlength="60" autocomplete="off" aria-describedby="wishlist-error">
+      <button type="submit" class="btn">Add</button>
+    </div>
+    <p id="wishlist-error" class="wishlist-error" hidden>Please type a rock name first.</p>
+  </form>
+
+  <p id="wishlist-count" class="wishlist-count" aria-live="polite">Items in wishlist: 0</p>
+  <ul id="wishlist-list" class="wishlist-list"></ul>
+  <p id="wishlist-empty" class="wishlist-empty">Your wishlist is empty.</p>
 </section>
 
 
