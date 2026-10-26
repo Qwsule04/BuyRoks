@@ -1,0 +1,111 @@
+.wishlist {
+  max-width: 40rem;
+  margin: 4rem auto 0;
+  padding: 2rem;
+}
+
+.wishlist-tag {
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #5a2ea6;
+  margin: 0;
+}
+
+.wishlist h2 {
+  text-align: center;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  margin: 0.25rem 0 0.5rem;
+}
+
+.wishlist-intro {
+  text-align: center;
+  color: #555555;
+  margin-bottom: 1.5rem;
+}
+
+.wishlist-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.wishlist-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.wishlist-row input {
+  flex: 1;
+  min-width: 0;
+  font: inherit;
+  padding: 0.6rem 0.8rem;
+  border: 2px solid #231f20;
+  border-radius: 6px;
+}
+
+.wishlist-row .btn {
+  margin-top: 0;
+  border: none;
+  font-family: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.wishlist-error {
+  color: #b3261e;
+  font-weight: 600;
+  margin: 0.5rem 0 0;
+}
+
+.wishlist-count {
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.wishlist-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wishlist-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #e3dcef;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+}
+
+.wishlist-item span {
+  overflow-wrap: anywhere;
+}
+
+.wishlist-remove {
+  flex-shrink: 0;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.35rem 0.8rem;
+  background-color: transparent;
+  color: #231f20;
+  border: 2px solid #231f20;
+  cursor: pointer;
+}
+
+.wishlist-remove:hover {
+  background-color: #ccadff;
+}
+
+.wishlist-empty {
+  color: #555555;
+  margin: 0;
+}
