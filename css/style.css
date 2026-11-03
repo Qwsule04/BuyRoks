@@ -671,3 +671,21 @@ body.dark .wishlist-remove:hover {
 body.dark .wishlist-error {
   color: #ff8a80;
 }
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+.faq-question:focus-visible { outline: 3px solid #7a4dff; outline-offset: 2px; }
+.faq-question[aria-expanded="true"] { background: #e9ddff; }
+.faq-item h3 { margin: 0; }
+.faq-item { margin-bottom: 0.75rem; }
+.faq-answer { display: none; padding: 1rem; }
+.faq-status { opacity: 0; min-height: 1.5rem; font-weight: 600; }
