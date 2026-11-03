@@ -1,44 +1,40 @@
-$(document).ready(function() {
-
+$(function () {
   const $nameInput = $('#username-input');
-  const $welcomeBtn = $('#welcome-btn');
   const $welcomeMessage = $('#welcome-message');
+  const $contactForm = $('#contactForm');
 
-  if ($welcomeBtn.length && $nameInput.length && $welcomeMessage.length) {
-    $welcomeBtn.on('click', function() {
-      const trimmedValue = $nameInput.val().trim();
+  $('#welcome-btn').on('click', function () {
+    const name = $nameInput.val().trim();
 
-      if (trimmedValue === '') {
-        $welcomeMessage
-          .text('Please enter a valid name (cannot be empty or whitespace).')
-          .removeClass('text-success')
-          .addClass('text-danger');
-      } else {
-        $welcomeMessage
-          .text(`Welcome to Buy Rocks, ${trimmedValue}! We're thrilled to have you.`)
-          .removeClass('text-danger')
-          .addClass('text-success');
-      }
-    });
-    $nameInput.on('input', function() {
-      if ($(this).val().trim() === '') {
-        $welcomeMessage.text('');
-      }
-    });
-  }
+    if (name === '') {
+      $welcomeMessage
+        .text('Please enter a valid name (cannot be empty or whitespace).')
+        .removeClass('text-success')
+        .addClass('text-danger');
+    } else {
+      $welcomeMessage
+        .text(`Welcome to Buy Rocks, ${name}! We're thrilled to have you.`)
+        .removeClass('text-danger')
+        .addClass('text-success');
+    }
+  });
 
-  const $faqButtons = $('.faq-toggle');
+  $nameInput.on('input', function () {
+    if ($(this).val().trim() === '') {
+      $welcomeMessage.text('');
+    }
+  });
 
-  if ($faqButtons.length > 0) {
-    $faqButtons.on('click', function() {
-      const $button = $(this);
-      const $answer = $button.next('.faq-answer'); 
-      
-      $answer.slideToggle(200, function() {
-        const isVisible = $answer.is(':visible');
-        $button.attr('aria-expanded', String(isVisible));
-      });
-    });
-  }
+  $contactForm.on('submit', function (event) {
+    event.preventDefault();
 
+    if (!this.checkValidity()) {
+      $contactForm.addClass('was-validated');
+      return;
+    }
+
+    alert('Demo only: your message was not sent anywhere.');
+    this.reset();
+    $contactForm.removeClass('was-validated');
+  });
 });
