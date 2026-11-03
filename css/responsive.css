@@ -1,4 +1,3 @@
-
 @media (min-width: 30rem) {
   header {
     position: sticky;
@@ -17,6 +16,7 @@
     text-align: left;
   }
 }
+
 @media (min-width: 48rem) {
   .hero,
   .reviews-teaser {
@@ -24,15 +24,29 @@
     text-align: left;
   }
 
+  .hero > * {
+    flex: 1;
+  }
+
   .catalog-grid {
-    display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
+  }
+
+  .reviews-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .showcase-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 64rem) {
   .catalog-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .reviews-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
