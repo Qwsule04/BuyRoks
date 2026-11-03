@@ -200,47 +200,48 @@
           integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  
   <script src="js/faq.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    $(document).ready(function() {
 
-      const nameInput = document.getElementById('username-input');
-      const welcomeBtn = document.querySelector('#welcome-btn');
-      const welcomeMessage = document.getElementById('welcome-message');
+      $('#welcome-btn').on('click', function() {
+        const trimmedValue = $('#username-input').val().trim();
+        const $welcomeMsg = $('#welcome-message');
 
-      if (welcomeBtn && nameInput && welcomeMessage) {
-        welcomeBtn.addEventListener('click', () => {
-          const trimmedValue = nameInput.value.trim();
-
-          if (trimmedValue === '') {
-            welcomeMessage.textContent = 'Please enter a valid name before submitting!';
-            welcomeMessage.style.color = 'red';
-          } else {
-            welcomeMessage.textContent = `Welcome to Buy Rocks, ${trimmedValue}! We are glad to have you here.`;
-            welcomeMessage.style.color = 'green';
-          }
-        });
-      }
-
+        if (trimmedValue === '') {
+          $welcomeMsg
+            .text('Please enter a valid name before submitting!')
+            .removeClass('text-success')
+            .addClass('text-danger');
+        } else {
+          $welcomeMsg
+            .text(`Welcome to Buy Rocks, ${trimmedValue}! We are glad to have you here.`)
+            .removeClass('text-danger')
+            .addClass('text-success');
+        }
+      });
+      $('#username-input').on('input', function() {
+        if ($(this).val().trim() === '') {
+          $('#welcome-message').text('');
+        }
+      });
+      const $contactForm = $('#contactForm');
+      $contactForm.on('submit', function(event) {
+        if (!this.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        } else {
+          event.preventDefault();
+          alert('Thank you! Your message has been successfully sent (Frontend Demonstration).');
+          this.reset();
+          $contactForm.removeClass('was-validated');
+          return;
+        }
+        $contactForm.addClass('was-validated');
+      });
     });
-  </script>
-
-  <script>
-    const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', function (event) {
-      if (!contactForm.checkValidity()) {
-        event.preventDefault();
-        event.stopPropagation();
-      } else {
-        event.preventDefault();
-        alert('Thank you! Your message has been successfully sent.');
-        contactForm.reset();
-        contactForm.classList.remove('was-validated');
-        return;
-      }
-      contactForm.classList.add('was-validated');
-    }, false);
   </script>
 
 </body>
