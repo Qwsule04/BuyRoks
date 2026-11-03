@@ -11,42 +11,44 @@ body {
   color: #231f20;
 }
 
-/* Header */
+/* ===== Header ===== */
 header {
   background-color: #ccadff;
   padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  width: 100%;
 }
 
 .logo {
-  height: 60px;
-  width: auto;
+  height: 60px !important;
+  width: auto !important;
 }
 
 nav ul {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
+  display: flex !important;
+  flex-direction: row !important;
+  list-style: none !important;
+  gap: 2rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 nav a {
-  text-decoration: none;
-  color: #231f20;
-  font-weight: 600;
+  text-decoration: none !important;
+  color: #231f20 !important;
+  font-weight: 600 !important;
   font-size: 1.1rem;
 }
 
 nav a:hover,
 nav a.current {
-  color: #5a2ea6;
-  text-decoration: underline;
+  color: #5a2ea6 !important;
+  text-decoration: underline !important;
 }
 
-/* Switch to dark mode button */
 #theme-toggle {
   padding: 0.5rem 1rem;
   border: none;
@@ -56,52 +58,55 @@ nav a.current {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 #theme-toggle:hover {
   background-color: #5cc42e;
 }
 
-/* ===== HERO SECTION (Скриншоттағы негізгі бөлім) ===== */
+/* ===== HERO (Сурет пен мәтінді қатар қою) ===== */
 .hero {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 3rem !important;
   max-width: 1160px;
-  margin: 0 auto;
-  padding: 3rem 2rem;
+  margin: 0 auto !important;
+  padding: 4rem 2rem !important;
 }
 
 .hero-text {
-  flex: 1;
-  max-width: 550px;
+  flex: 1 !important;
+  max-width: 550px !important;
+  text-align: left !important;
 }
 
 .hero-text h1 {
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 1rem;
+  font-size: clamp(2rem, 4vw, 3.2rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  margin-bottom: 1rem !important;
 }
 
 .hero-text h2 {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 1.5rem;
+  font-size: 1.4rem !important;
+  font-weight: 600 !important;
+  color: #333333 !important;
+  margin-bottom: 1.5rem !important;
 }
 
 .hero-photo {
-  flex: 1;
-  max-width: 480px;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
+  flex: 1 !important;
+  max-width: 450px !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  border-radius: 12px;
 }
 
-/* Buttons */
+/* Батырмалар */
 .btn, .create-account-btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
@@ -118,7 +123,7 @@ nav a.current {
   background-color: #5cc42e;
 }
 
-/* Catalog section title */
+/* Catalog Тақырыбы */
 .catalog h2, .catalog-title {
   text-align: center;
   font-size: 2.2rem;
@@ -131,9 +136,10 @@ footer {
   background-color: #231f20;
   color: #ffffff;
   padding: 1.5rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: center !important;
   margin-top: 4rem;
 }
 
@@ -141,20 +147,20 @@ footer {
   height: 35px;
 }
 
-/* Dark theme overrides */
+/* Қараңғы режим (Dark mode) */
 body.dark {
-  background-color: #121212;
-  color: #f1f1f1;
+  background-color: #121212 !important;
+  color: #f1f1f1 !important;
 }
 
 body.dark header {
-  background-color: #2a2140;
+  background-color: #2a2140 !important;
 }
 
 body.dark nav a {
-  color: #f1f1f1;
+  color: #f1f1f1 !important;
 }
 
 body.dark .hero-text h2 {
-  color: #ccc;
+  color: #cccccc !important;
 }
