@@ -196,53 +196,9 @@
     <p class="copyright">&copy; 2026 Buy Roks. None of the rights reserved.</p>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-          integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="js/faq.js"></script>
-
-  <script>
-    $(document).ready(function() {
-
-      $('#welcome-btn').on('click', function() {
-        const trimmedValue = $('#username-input').val().trim();
-        const $welcomeMsg = $('#welcome-message');
-
-        if (trimmedValue === '') {
-          $welcomeMsg
-            .text('Please enter a valid name before submitting!')
-            .removeClass('text-success')
-            .addClass('text-danger');
-        } else {
-          $welcomeMsg
-            .text(`Welcome to Buy Rocks, ${trimmedValue}! We are glad to have you here.`)
-            .removeClass('text-danger')
-            .addClass('text-success');
-        }
-      });
-      $('#username-input').on('input', function() {
-        if ($(this).val().trim() === '') {
-          $('#welcome-message').text('');
-        }
-      });
-      const $contactForm = $('#contactForm');
-      $contactForm.on('submit', function(event) {
-        if (!this.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        } else {
-          event.preventDefault();
-          alert('Thank you! Your message has been successfully sent (Frontend Demonstration).');
-          this.reset();
-          $contactForm.removeClass('was-validated');
-          return;
-        }
-        $contactForm.addClass('was-validated');
-      });
-    });
-  </script>
+  <script src="js/about.js"></script>
 
 </body>
 </html>

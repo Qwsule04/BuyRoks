@@ -1,32 +1,52 @@
 # BuyRoks
 
-A university project for a WEB Technologies 1 (Front End) class.
+Final project for WEB Technologies 1 (Front End), Group MT-2505, Team 27.
 
-Topic: Pet rocks shop
+BuyRoks is a pet rocks shop website: you can browse and search the rock catalog, save rocks to a wishlist, read reviews and create a demo account.
 
-Goal: a responsive multi-page website built with HTML, CSS, Bootstrap and basic JavaScript. Group: MT-2505, Team 27
+Live website: https://qwsule04.github.io/BuyRoks/
 
-Team members: Mukashev Aidos, Nurbek Myktybek, Sakat Kabdrash.
+Repository: https://github.com/Qwsule04/BuyRoks
 
-Site consists of:
-- index.html (by Mukashev Aidos)
-- reviews.html (by Sakat Kabdrash)
-- about.html (by Nurbek Myktybek), includes the contact form
-- register.html (by Mukashev Aidos), registration form
+## Team
 
-GitHub Pages URL: https://qwsule04.github.io/BuyRoks/
+- Mukashev Aidos
+- Nurbek Myktybek
+- Sakat Kabdrash
 
-How to open locally
+## How to open
 
-Download or unzip the project and open index.html in a browser. The contact form is at the bottom of about.html, the registration form is register.html.
+Open the live website link, or download the project and open index.html in a browser. jQuery and Bootstrap CSS load from a CDN, so an internet connection is needed.
 
-Limitations
+## Files
 
-The site is static. The forms are checked with HTML5 validation, Bootstrap validation classes and a small JavaScript check for matching passwords. No data is sent or stored.
+```
+index.html         catalog, search with categories, wishlist
+about.html         about us, welcome message, FAQ, contact form
+reviews.html       customer reviews, leave a review form
+register.html      registration form
+demo-result.html   result page for the demo forms
+css/               style.css, responsive.css, wishlist.css, register.css
+js/                theme.js, about.js, faq.js, search.js, wishlist.js, register.js
+images/            all images
+```
 
-## Assignment 5: Forms and Validation
+## jQuery features
 
-Contributions:
-- Nurbek Myktybek: contact form (about.html), HTML5 validation, Bootstrap styling and feedback
-- Mukashev Aidos: registration form (register.html, js/register.js, css/register.css), password match check, Reset, success message
-- Sakat Kabdrash: form testing, screenshots, README test tables, report
+| Task | Feature | Page | File |
+|---|---|---|---|
+| 1 | Welcome message, theme switch | about.html, all pages | js/about.js, js/theme.js |
+| 2 | FAQ with slideToggle, fading status message | about.html | js/faq.js |
+| 3 | Search with categories | index.html | js/search.js |
+| 4 | Wishlist (add / remove) | index.html | js/wishlist.js |
+| 5 | Registration form validation | register.html | js/register.js |
+
+## Contribution
+
+- Mukashev Aidos: Task 4 (wishlist), Task 5 (registration form validation), testing (Task 8), README (Task 9)
+- Nurbek Myktybek: Task 1 (welcome message), Task 2 (FAQ)
+- Sakat Kabdrash: Task 1 (theme switch), Task 3 (search with categories)
+
+## Limitations
+
+The site is frontend only. Forms are checked in the browser, nothing is sent or stored. The wishlist is cleared when the page is reloaded.
