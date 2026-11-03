@@ -1,56 +1,48 @@
-const wishlistForm = document.getElementById('wishlist-form');
-const wishlistInput = document.getElementById('wishlist-input');
-const wishlistList = document.getElementById('wishlist-list');
-const wishlistCount = document.getElementById('wishlist-count');
-const wishlistError = document.getElementById('wishlist-error');
-const wishlistEmpty = document.getElementById('wishlist-empty');
+$(function () {
+  const $form = $('#wishlist-form');
+  const $input = $('#wishlist-input');
+  const $list = $('#wishlist-list');
+  const $count = $('#wishlist-count');
+  const $error = $('#wishlist-error');
+  const $empty = $('#wishlist-empty');
 
-function updateCount() {
-  const count = wishlistList.children.length;
-  wishlistCount.textContent = `Items in wishlist: ${count}`;
-  wishlistEmpty.hidden = count > 0;
-}
-
-wishlistForm.addEventListener('submit', function (event) {
-  event.preventDefault();
-
-  const text = wishlistInput.value.trim();
-
-  if (text === '') {
-    wishlistError.hidden = false;
-    wishlistInput.focus();
-    return;
+  function updateCount() {
+    const count = $list.children().length;
+    $count.text('Items in wishlist: ' + count);
+    $empty.prop('hidden', count > 0);
   }
-  wishlistError.hidden = true;
 
-  const item = document.createElement('li');
-  item.className = 'wishlist-item';
+  $form.on('submit', function (event) {
+    event.preventDefault();
+    const text = $input.val().trim();
 
-  const name = document.createElement('span');
-  name.textContent = text;
+    if (text === '') {
+      $error.prop('hidden', false);
+      $input.trigger('focus');
+      return;
+    }
+    $error.prop('hidden', true);
 
-  const removeButton = document.createElement('button');
-  removeButton.type = 'button';
-  removeButton.className = 'wishlist-remove';
-  removeButton.textContent = 'Remove';
-  removeButton.setAttribute('aria-label', `Remove ${text}`);
+    const $item = $('<li class="wishlist-item"></li>');
+    $('<span></span>').text(text).appendTo($item);
+    $('<button type="button" class="wishlist-remove">Remove</button>')
+      .attr('aria-label', 'Remove ' + text)
+      .appendTo($item);
+    $list.append($item);
 
-  removeButton.addEventListener('click', function () {
-    item.remove();
+    $input.val('').trigger('focus');
     updateCount();
-    wishlistInput.focus();
   });
 
-  item.append(name, removeButton);
-  wishlistList.appendChild(item);
+  $list.on('click', '.wishlist-remove', function () {
+    $(this).closest('li').remove();
+    updateCount();
+    $input.trigger('focus');
+  });
 
-  wishlistInput.value = '';
-  wishlistInput.focus();
+  $input.on('input', function () {
+    $error.prop('hidden', true);
+  });
+
   updateCount();
 });
-
-wishlistInput.addEventListener('input', function () {
-  wishlistError.hidden = true;
-});
-
-updateCount();
