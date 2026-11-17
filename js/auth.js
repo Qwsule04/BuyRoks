@@ -1,110 +1,118 @@
-// auth.js
-
 $(document).ready(function () {
     updateNavbar();
 
-    // 1. Телефон нөмірін тексеру паттерні (+7 7XX XXX XX XX немесе 87XXXXXXXXX)
+    // Телефон паттерні (+7 немесе 8-бен басталатын формат)
     const phoneRegex = /^(\+7|8)[\s\-]?\(?7\d{2}\)?[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}$/;
     
-    // 2. Құпиясөз күрделілігі (кемінде 8 таңба, 1 бас әріп, 1 кіші әріп, 1 сан)
+    // Құпиясөз күрделілігі: кемінде 8 таңба, 1 бас әріп, 1 кіші әріп, 1 сан
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 
-    // --- ТІРКЕЛУ (REGISTER) ФОРМАСЫ ---
-    $('#registerForm').on('submit', function (e) {
+    // --- 1 & 4 & 5. ТІРКЕЛУ (REGISTER) ФОРМАСЫ ---
+    $('#register-form').on('submit', function (e) {
         e.preventDefault();
         let isValid = true;
 
-        const name = $('#regName').val().trim();
-        const email = $('#regEmail').val().trim();
-        const phone = $('#regPhone').val().trim();
-        const password = $('#regPassword').val();
+        const firstName = $('#first-name').val().trim();
+        const lastName = $('#last-name').val().trim();
+        const email = $('#email').val().trim();
+        const phone = $('#phone').val() ? $('#phone').val().trim() : '';
+        const password = $('#password').val();
+        const confirmPassword = $('#confirm-password').val();
 
-        // Аты
-        if (name.length < 2) {
-            showError('#regName', 'Атыңызды толық енгізіңіз');
+        if (firstName.length < 2) {
+            showError('#first-name', 'Enter at least 2 characters.');
             isValid = false;
         } else {
-            clearError('#regName');
+            clearError('#first-name');
         }
 
-        // Email
-        if (!email.includes('@') || !email.includes('.')) {
-            showError('#regEmail', 'Дұрыс email енгізіңіз');
+        if (lastName.length < 2) {
+            showError('#last-name', 'Enter at least 2 characters.');
             isValid = false;
         } else {
-            clearError('#regEmail');
+            clearError('#last-name');
         }
 
-        // Телефон валидациясы
-        if (!phoneRegex.test(phone)) {
-            showError('#regPhone', 'Формат: +7 7XX XXX XX XX немесе 87001234567');
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            showError('#email', 'Enter a valid email address.');
             isValid = false;
         } else {
-            clearError('#regPhone');
+            clearError('#email');
         }
 
-        // Құпиясөз күрделілігі
+        // Телефонды тексеру
+        if (phone && !phoneRegex.test(phone)) {
+            showError('#phone', 'Format: +7 700 123 45 67');
+            isValid = false;
+        } else if (phone) {
+            clearError('#phone');
+        }
+
+        // Құпиясөз күрделілігін тексеру
         if (!passwordRegex.test(password)) {
-            showError('#regPassword', 'Кемінде 8 таңба, 1 бас әріп, 1 кіші әріп және 1 сан болуы керек');
+            showError('#password', 'At least 8 chars, 1 uppercase, 1 lowercase & 1 number.');
             isValid = false;
         } else {
-            clearError('#regPassword');
+            clearError('#password');
+        }
+
+        if (password !== confirmPassword) {
+            showError('#confirm-password', 'Passwords do not match.');
+            isValid = false;
+        } else {
+            clearError('#confirm-password');
         }
 
         if (isValid) {
-            // Деректерді localStorage-қа сақтау
-            const userData = { name, email, phone, password };
+            const userData = {
+                name: `${firstName} ${lastName}`,
+                email: email,
+                phone: phone || 'Not provided'
+            };
             localStorage.setItem('buyRocksUser', JSON.stringify(userData));
-            localStorage.setItem('isLoggedIn', 'true'); // Тіркелген соң бірден кіргізу
+            localStorage.setItem('buyRocksPassword', password);
+            localStorage.setItem('isLoggedIn', 'true');
 
-            alert('Сәтті тіркелдіңіз!');
-            window.location.href = 'profile.html';
+            $('#success-message').removeClass('d-none').text('Successfully registered! Redirecting...');
+            setTimeout(() => {
+                window.location.href = 'profile.html';
+            }, 1000);
         }
     });
 
-    // --- КІРУ (LOGIN) ФОРМАСЫ ---
-    $('#loginForm').on('submit', function (e) {
+    // --- 2. КІРУ (LOGIN) ФОРМАСЫ ---
+    $('#login-form').on('submit', function (e) {
         e.preventDefault();
+        const email = $('#login-email').val().trim();
+        const password = $('#login-password').val();
 
-        const email = $('#loginEmail').val().trim();
-        const password = $('#loginPassword').val();
         const storedUser = JSON.parse(localStorage.getItem('buyRocksUser'));
+        const storedPassword = localStorage.getItem('buyRocksPassword');
 
-        if (!storedUser) {
-            alert('Тіркелген пайдаланушы табылмады. Алдымен тіркеліңіз!');
+        if (!storedUser || !storedPassword) {
+            $('#login-error').text('No registered user found. Please register first!').removeClass('d-none');
             return;
         }
 
-        if (email === storedUser.email && password === storedUser.password) {
+        if (email === storedUser.email && password === storedPassword) {
             localStorage.setItem('isLoggedIn', 'true');
             window.location.href = 'profile.html';
         } else {
-            $('#loginError').text('Email немесе құпиясөз қате!').removeClass('d-none');
+            $('#login-error').text('Invalid email or password!').removeClass('d-none');
         }
     });
 
-    // --- ABOUT БЕТІНДЕГІ CONTACT ФОРМАСЫ ---
+    // --- 4. ABOUT БЕТІНДЕГІ CONTACT ФОРМАСЫНА ТЕЛЕФОН ВАЛИДАЦИЯСЫ ---
     $('#contactForm').on('submit', function (e) {
-        e.preventDefault();
-        const phone = $('#contactPhone').val().trim();
-
-        if (!phoneRegex.test(phone)) {
-            showError('#contactPhone', 'Дұрыс телефон нөмірін енгізіңіз (+7 7XX XXX XX XX)');
-        } else {
-            clearError('#contactPhone');
-            alert('Хабарламаңыз сәтті жіберілді!');
-            this.reset();
+        const phone = $('#contact-phone').val() ? $('#contact-phone').val().trim() : '';
+        if (phone && !phoneRegex.test(phone)) {
+            e.preventDefault();
+            showError('#contact-phone', 'Please enter a valid phone number (+7...).');
         }
     });
 
-    // --- LOGOUT БАТЫРМАСЫ ---
-    $(document).on('click', '#logoutBtn, #navLogoutBtn', function (e) {
-        e.preventDefault();
-        localStorage.setItem('isLoggedIn', 'false');
-        window.location.href = 'login.html';
-    });
-
-    // --- PROFILE БЕТІНЕ ДЕРЕКТЕРДІ ШЫҒАРУ ---
+    // --- 3. PROFILE БЕТІ ДЕРЕКТЕРІ ЖӘНЕ LOGOUT ---
     if (window.location.pathname.includes('profile.html')) {
         const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
         const storedUser = JSON.parse(localStorage.getItem('buyRocksUser'));
@@ -112,43 +120,42 @@ $(document).ready(function () {
         if (!isLoggedIn || !storedUser) {
             window.location.href = 'login.html';
         } else {
-            $('#profileName').text(storedUser.name);
-            $('#profileEmail').text(storedUser.email);
-            $('#profilePhone').text(storedUser.phone);
+            $('#profile-name').text(storedUser.name);
+            $('#profile-email').text(storedUser.email);
+            $('#profile-phone').text(storedUser.phone);
         }
     }
+
+    $(document).on('click', '#logout-btn', function (e) {
+        e.preventDefault();
+        localStorage.setItem('isLoggedIn', 'false');
+        window.location.href = 'login.html';
+    });
 });
 
-// Барлық беттердегі Навбарды жаңарту
+// --- 6. НАВБАР КҮЙІН БАСҚАРУ ---
 function updateNavbar() {
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-    const authNavContainer = $('#authNavLinks'); // Навбардағы арнайы блок
+    const $navUl =$('header nav ul');
+
+    // Бұрынғы Register / Login сілтемелерін тазалап, жаңасын қоямыз
+    $navUl.find('.auth-link').remove();
 
     if (isLoggedIn) {
-        authNavContainer.html(`
-            <li class="nav-item">
-                <a class="nav-link fw-bold text-primary" href="profile.html">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-danger" href="#" id="navLogoutBtn">Logout</a>
-            </li>
+        $navUl.append(`
+            <li class="auth-link"><a href="profile.html">Profile</a></li>
+            <li class="auth-link"><a href="#" id="logout-btn">Logout</a></li>
         `);
     } else {
-        authNavContainer.html(`
-            <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="register.html">Register</a>
-            </li>
+        $navUl.append(`
+            <li class="auth-link"><a href="login.html">Login</a></li>
+            <li class="auth-link"><a href="register.html">Register</a></li>
         `);
     }
 }
 
-// Қателіктерді көрсету көмекші функциялары (Bootstrap validation стильдерімен)
 function showError(selector, message) {
-    $(selector).addClass('is-invalid');
-    $(selector).siblings('.invalid-feedback').text(message);
+    $(selector).addClass('is-invalid').removeClass('is-valid');$(selector).nextAll('.invalid-feedback').first().text(message);
 }
 
 function clearError(selector) {
