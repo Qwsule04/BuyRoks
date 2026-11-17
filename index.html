@@ -12,17 +12,18 @@
   <script src="js/wishlist.js" defer></script>
   <script src="js/search.js" defer></script>
   <script src="js/theme.js" defer></script>
+  <script src="js/auth.js" defer></script>
 </head>
 <body>
 
   <header>
     <img src="images/logo.png" alt="Buy Rocks" class="logo" width="340" height="237">
     <nav>
-      <ul>
+      <ul class="nav-menu">
         <li><a href="index.html" aria-current="page">Catalog</a></li>
         <li><a href="reviews.html">Reviews</a></li>
         <li><a href="about.html">About us</a></li>
-        <li><a href="register.html">Register</a></li>
+        <!-- Динамикалық auth сілтемелері осында автоматты түрде қосылады -->
       </ul>
     </nav>
     <button id="theme-toggle" type="button">Switch to dark mode</button>
@@ -46,7 +47,6 @@
      <label for="search">Search rocks</label>
      <input type="text" id="search" autocomplete="off" placeholder="Type a rock name...">
      
-     <!-- Кнопки фильтрации по категориям (Task 3) -->
      <div class="category-filters" style="margin: 15px 0; display: flex; gap: 10px;">
        <button type="button" class="category-btn active" data-category="all">All</button>
        <button type="button" class="category-btn" data-category="white">White</button>
@@ -58,56 +58,49 @@
   </div>
 
   <div class="catalog-grid">
-
     <article class="product-card" data-category="white">
       <img src="images/rock-1.jpg" alt="White rock" class="product-photo" width="1000" height="1000">
       <h3>White nerd</h3>
       <p>Doesn't molt, doesn't ask for food, never runs away.</p>
       <p class="price">$99.99</p>
     </article>
-
     <article class="product-card" data-category="colored">
       <img src="images/rock-2.jpg" alt="Purple rock" class="product-photo" width="502" height="216">
       <h3>Purple nerd</h3>
       <p>Like the white one but purple. Also quite square.</p>
       <p class="price">$199.99</p>
     </article>
-
     <article class="product-card" data-category="white">
       <img src="images/rock-3.jpg" alt="White-purple rock" class="product-photo" width="873" height="464">
       <h3>White-purple nerd</h3>
       <p>Like the white one but with a purple tint.</p>
       <p class="price">$299.99</p>
     </article>
-
     <article class="product-card" data-category="colored">
       <img src="images/rock-4.jpg" alt="Emerald rock" class="product-photo" width="943" height="536">
       <h3>Emerald nerd</h3>
       <p>not actually an emerald.</p>
       <p class="price">$399.99</p>
     </article>
-
     <article class="product-card" data-category="colored">
       <img src="images/rock-5.jpg" alt="Red rock" class="product-photo" width="521" height="262">
       <h3>Red nerd</h3>
       <p>Red as blood.</p>
       <p class="price">$499.99</p>
     </article>
-
     <article class="product-card" data-category="colored">
       <img src="images/rock-6.jpg" alt="Yellow rock" class="product-photo" width="633" height="353">
       <h3>Yellow nerd</h3>
       <p>Yellow as sunshine.</p>
       <p class="price">$1499.99</p>
     </article>
-
   </div>
 </section>
 
 <section class="wishlist" aria-labelledby="wishlist-title">
   <p class="wishlist-tag">Dynamic list</p>
   <h2 id="wishlist-title">My rock wishlist</h2>
-  <p class="wishlist-intro">Write down the rocks you would like to adopt. The list lives only on this page and is cleared when you reload it.</p>
+  <p class="wishlist-intro">Write down the rocks you would like to adopt.</p>
 
   <form id="wishlist-form" class="wishlist-form">
     <label for="wishlist-input">Rock name</label>
@@ -126,20 +119,16 @@
 <section class="reviews-teaser">
   <div class="reviews-teaser-text">
     <h2>Still unsure? Check out our reviews!</h2>
-
     <p class="quote">"My cat got hit by a car, so i cope with it." - Gleb G.</p>
     <p class="stars">★★★★★</p>
-
     <a href="reviews.html" class="btn">Read all reviews</a>
   </div>
-
-  <img src="images/customer.jpg" alt="Happy (kinda) customer holding a rock" class="reviews-teaser-photo" width="800" height="800">
+  <img src="images/customer.jpg" alt="Happy customer holding a rock" class="reviews-teaser-photo" width="800" height="800">
 </section>
 </main>
 
 <footer>
   <img src="images/logo.png" alt="Buy Roks" class="footer-logo" width="340" height="237">
-    
   <p class="copyright">© 2026 Buy Roks. None of the rights reserved.</p>
 </footer>
 </body>
