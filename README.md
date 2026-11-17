@@ -1,6 +1,6 @@
 # BuyRoks
 
-Final project for WEB Technologies 1 (Front End), Group MT-2505, Team 27.
+Final project for WEB Technologies 1 (Front End), Group MT-2505, Student by: Nurbek Myktybek
 
 BuyRoks is a pet rocks shop website: you can browse and search the rock catalog, save rocks to a wishlist, read reviews and create a demo account.
 
@@ -8,7 +8,6 @@ Live website: https://qwsule04.github.io/BuyRoks/
 
 Repository: https://github.com/Qwsule04/BuyRoks
 
-Student by: Nurbek Myktybek
 ## How to open
 
 Open the live website link, or download the project and open index.html in a browser. jQuery and Bootstrap CSS load from a CDN, so an internet connection is needed.
