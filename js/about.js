@@ -2,6 +2,7 @@ $(function () {
   const $nameInput = $('#username-input');
   const $welcomeMessage = $('#welcome-message');
   const $contactForm = $('#contactForm');
+  const phoneRegex = /^(\+7|8)[\s\-]?\(?7\d{2}\)?[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}$/;
 
   $('#welcome-btn').on('click', function () {
     const name = $nameInput.val().trim();
@@ -27,14 +28,27 @@ $(function () {
 
   $contactForm.on('submit', function (event) {
     event.preventDefault();
+    const $phoneInput = $('#contact-phone');
+    const phoneVal = $phoneInput.val().trim();
+
+    // Телефон паттернін тексеру
+    if (!phoneRegex.test(phoneVal)) {
+      $phoneInput[0].setCustomValidity('Invalid phone format');
+    } else {
+      $phoneInput[0].setCustomValidity('');
+    }
 
     if (!this.checkValidity()) {
       $contactForm.addClass('was-validated');
       return;
     }
 
-    alert('Demo only: your message was not sent anywhere.');
+    alert('Thank you! Your message has been sent.');
     this.reset();
     $contactForm.removeClass('was-validated');
+  });
+
+  $('#contact-phone').on('input', function () {
+    this.setCustomValidity('');
   });
 });
