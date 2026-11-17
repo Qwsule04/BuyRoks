@@ -7,13 +7,7 @@ BuyRoks is a pet rocks shop website: you can browse and search the rock catalog,
 Live website: https://qwsule04.github.io/BuyRoks/
 
 Repository: https://github.com/Qwsule04/BuyRoks
-
-## Team
-
-- Mukashev Aidos
-- Nurbek Myktybek
-- Sakat Kabdrash
-
+Student by: Nurbek Myktybek
 ## How to open
 
 Open the live website link, or download the project and open index.html in a browser. jQuery and Bootstrap CSS load from a CDN, so an internet connection is needed.
@@ -40,12 +34,6 @@ images/            all images
 | 3 | Search with categories | index.html | js/search.js |
 | 4 | Wishlist (add / remove) | index.html | js/wishlist.js |
 | 5 | Registration form validation | register.html | js/register.js |
-
-## Contribution
-
-- Mukashev Aidos: Task 4 (wishlist), Task 5 (registration form validation), testing (Task 8), README (Task 9)
-- Nurbek Myktybek: Task 1 (welcome message), Task 2 (FAQ)
-- Sakat Kabdrash: Task 1 (theme switch), Task 3 (search with categories)
 
 ## Limitations
 
