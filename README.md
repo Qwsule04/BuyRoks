@@ -7,6 +7,7 @@ BuyRoks is a pet rocks shop website: you can browse and search the rock catalog,
 Live website: https://qwsule04.github.io/BuyRoks/
 
 Repository: https://github.com/Qwsule04/BuyRoks
+
 Student by: Nurbek Myktybek
 ## How to open
 
